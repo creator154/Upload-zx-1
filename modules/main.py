@@ -567,17 +567,17 @@ async def txt_handler(bot: Client, m: Message):
         
                 cc = (
     f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
-    f"<b>c🎞️Tɪᴛʟᴇ :</b> {name}\n\n"
+    f"<b>🎞️ Tɪᴛʟᴇ :</b> {name}\n\n"
     f"<blockquote>📚 𝗕ᴀᴛᴄʜ : {b_name}</blockquote>\n\n"
-    f"<b>📥 Uᴘʟᴏᴀᴅ Bʏ:</b> 【 <a href='https://t.me/{CR.replace('@','')}'>{CR}</a> 】\n\n"
-    f"<blockquote>━━━━━✦𝗭𝗫✦━━━━━</blockquote>"
+    f"<b>📥 Uᴘʟᴏᴀᴅ Bʏ :</b> 【 <a href='https://t.me/{CR.replace('@','')}'>{CR}</a> 】\n\n"
+    f"<blockquote>━━━━━ ✦𝗭𝗫✦ ━━━━━</blockquote>"
 )
                 cc1 = (
     f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
     f"<b>📑 Tɪᴛʟᴇ :</b> {name}.pdf\n\n"
     f"<blockquote>📚 𝗕ᴀᴛᴄʜ : {b_name}</blockquote>\n\n"
-    f"<b>📥  Uᴘʟᴏᴀᴅ Bʏ:</b> 【 <a href='https://t.me/{CR.replace('@','')}'>{CR}</a> 】\n\n"
-    f"<blockquote>━━━━━✦𝗭𝗫✦━━━━━</blockquote>"
+    f"<b>📥 Uᴘʟᴏᴀᴅ Bʏ :</b> 【 <a href='https://t.me/{CR.replace('@','')}'>{CR}</a> 】\n\n"
+    f"<blockquote>━━━━━ ✦𝗭𝗫✦ ━━━━━</blockquote>"
     )
                     
                 
