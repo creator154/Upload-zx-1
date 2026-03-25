@@ -560,14 +560,20 @@ async def txt_handler(bot: Client, m: Message):
             elif "youtube.com" in url or "youtu.be" in url:
                 cmd = f'yt-dlp --cookies youtube_cookies.txt -f "{ytf}" "{url}" -o "{name}".mp4'
 
-            else:
-                cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
-
-            try:  
-        
-                cc1 = f'🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n📑 Title: {name1} .pdf\n\n<pre><code>📚 Batch Name: {b_name}</code></pre>\n\n📥 Extracted By: </b> 【 <a href='https://t.me/{CR.replace('@','')}'>{CR}</a> 】\n\n∘━━━━━✦𝗭𝗫✦━━━━━**'
-                cc1 = f'🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n📑 Title: {name1} .pdf\n\n<pre><code>📚 Batch Name: {b_name}</code></pre>\n\n📥 Extracted By: </b> 【 <a href='https://t.me/{CR.replace('@','')}'>{CR}</a> 】\n\n∘━━━━━✦𝗭𝗫✦━━━━━**'
-        )
+else:
+           cc = (
+    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
+    f"<b>🎞️ Title :</b> {name1}\n\n"
+    f"<pre><code>📚 Batch Name: {b_name}</code></pre>\n\n"
+    f"<b>📥 Extracted By :</b> 【 <a href='https://t.me/{CR.replace('@','')}'>{CR}</a> 】\n\n"
+    f"∘━━━━━ ✦𝗭𝗫✦ ━━━━━"
+        )     cc1 = (
+    f"<b>🏷️ Iɴᴅᴇx ID :</b> {str(count).zfill(3)}\n\n"
+    f"<b>📑 Title :</b> {name1}.pdf\n\n"
+    f"<pre><code>📚 Batch Name: {b_name}</code></pre>\n\n"
+    f"<b>📥 Extracted By :</b> 【 <a href='https://t.me/{CR.replace('@','')}'>{CR}</a> 】\n\n"
+    f"∘━━━━━ ✦𝗭𝗫✦ ━━━━━"
+)
                     
                 
                 if "drive" in url:
