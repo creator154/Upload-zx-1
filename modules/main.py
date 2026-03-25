@@ -582,119 +582,83 @@ async def txt_handler(bot: Client, m: Message):
                     
                 
                 if "drive" in url:
-    try:
-        ka = await helper.download(url, name)
-        copy = await bot.send_document(
-            chat_id=m.chat.id,
-            document=ka,
-            caption=cc1,
-            parse_mode="html"
-        )
-        count += 1
-        os.remove(ka)
-        time.sleep(1)
+try:
+ka = await helper.download(url, name)
+copy = await bot.send_document(chat_id=m.chat.id,document=ka, caption=cc1)
+count+=1
+os.remove(ka)
+time.sleep(1)
+except FloodWait as e:
+await m.reply_text(str(e))
+time.sleep(e.x)
+continue
 
-    except FloodWait as e:
-        await m.reply_text(str(e))
-        time.sleep(e.x)
-        continue
+elif ".pdf" in url:  
+                try:  
+                    await asyncio.sleep(4)  
+    # Replace spaces with %20 in the URL  
+                    url = url.replace(" ", "%20")  
 
+    # Create a cloudscraper session  
+                    scraper = cloudscraper.create_scraper()  
 
-elif ".pdf" in url:
-    try:
-        await asyncio.sleep(4)
-        url = url.replace(" ", "%20")
+    # Send a GET request to download the PDF  
+                    response = scraper.get(url)  
 
-        scraper = cloudscraper.create_scraper()
-        response = scraper.get(url)
+    # Check if the response status is OK  
+                    if response.status_code == 200:  
+        # Write the PDF content to a file  
+                        with open(f'{name}.pdf', 'wb') as file:  
+                            file.write(response.content)  
 
-        if response.status_code == 200:
-            with open(f'{name}.pdf', 'wb') as file:
-                file.write(response.content)
+        # Send the PDF document  
+                        await asyncio.sleep(4)  
+                        copy = await bot.send_document(chat_id=m.chat.id, document=f'{name}.pdf', caption=cc1)  
+                        count += 1  
 
-            await asyncio.sleep(4)
-            copy = await bot.send_document(
-                chat_id=m.chat.id,
-                document=f'{name}.pdf',
-                caption=cc1,
-                parse_mode="html"
-            )
-            count += 1
-            os.remove(f'{name}.pdf')
+        # Remove the PDF file after sending  
+                        os.remove(f'{name}.pdf')  
+                    else:  
+                        await m.reply_text(f"Failed to download PDF: {response.status_code} {response.reason}")  
 
-        else:
-            await m.reply_text(
-                f"Failed to download PDF: {response.status_code} {response.reason}"
-            )
+                except FloodWait as e:  
+                    await m.reply_text(str(e))  
+                    time.sleep(e.x)  
+                    continue  
 
-    except FloodWait as e:
-        await m.reply_text(str(e))
-        time.sleep(e.x)
-        continue
+            elif ".pdf" in url:  
+                try:  
+                    cmd = f'yt-dlp -o "{name}.pdf" "{url}"'  
+                    download_cmd = f"{cmd} -R 25 --fragment-retries 25"  
+                    os.system(download_cmd)  
+                    copy = await bot.send_document(chat_id=m.chat.id, document=f'{name}.pdf', caption=cc1)  
+                    count += 1  
+                    os.remove(f'{name}.pdf')  
+                except FloodWait as e:  
+                    await m.reply_text(str(e))  
+                    time.sleep(e.x)  
+                    continue                         
+                        
+            else:  
+                Show = f"✰🖥️𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝗪𝗮𝗶𝘁..🤖🚀»\n\n📝 Title:- `{name}\n\n🖥️ 𝐐𝐮𝐥𝐢𝐭𝐲 » {raw_text2}`\n\n**🔗 𝐔𝐑𝐋 »** `{url}`\n\n**𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲: @SUMIT_ZX"  
+                prog = await m.reply_text(Show)  
+                res_file = await helper.download_video(url, cmd, name)  
+                filename = res_file  
+                await prog.delete(True)  
+                await helper.send_vid(bot, m, cc, filename, thumb, name, prog)  
+                count += 1  
+                time.sleep(1)  
 
+        except Exception as e:  
+            await m.reply_text(  
+                f"⌘ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝗙𝗮𝗶𝗹𝗲𝗱⛔\n\n⌘ 𝐍𝐚𝐦𝐞🌟 » {name}\n⌘ 𝐋𝐢𝐧𝐤 » `{url}`"  
+            )  
+            continue  
 
-elif ".pdf" in url:
-    try:
-        cmd = f'yt-dlp -o "{name}.pdf" "{url}"'
-        download_cmd = f"{cmd} -R 25 --fragment-retries 25"
-        os.system(download_cmd)
-
-        copy = await bot.send_document(
-            chat_id=m.chat.id,
-            document=f'{name}.pdf',
-            caption=cc1,
-            parse_mode="html"
-        )
-        count += 1
-        os.remove(f'{name}.pdf')
-
-    except FloodWait as e:
-        await m.reply_text(str(e))
-        time.sleep(e.x)
-        continue
-
-
-else:
-    Show = (
-        f"✰🖥️ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝗪𝗮𝗶𝘁..🤖🚀»\n\n"
-        f"📝 Title:- `{name}`\n\n"
-        f"🖥️ 𝐐𝐮𝐥𝐢𝐭𝐲 » {raw_text2}\n\n"
-        f"🔗 URL » `{url}`\n\n"
-        f"𝐁𝐨𝐭 𝐌𝐚𝐝𝐞 𝐁𝐲: @SUMIT_ZX"
-    )
-
-    prog = await m.reply_text(Show)
-    res_file = await helper.download_video(url, cmd, name)
-    filename = res_file
-
-    await prog.delete(True)
-
-    await helper.send_vid(
-        bot,
-        m,
-        cc,
-        filename,
-        thumb,
-        name,
-        prog,
-        parse_mode="html"
-    )
-
-    count += 1
-    time.sleep(1)
-
-            except Exception as e:
-                await m.reply_text(
-                    f"⌘ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝗙𝗮𝗶𝗹𝗲𝗱⛔\n\n⌘ 𝐍𝐚𝐦𝐞🌟 » {name}\n⌘ 𝐋𝐢𝐧𝐤 » `{url}`"
-                )
-                continue
-
-    except Exception as e:
-        await m.reply_text(e)
-    await m.reply_text("𝐄𝐕𝐄𝐑𝐘𝐓𝐇𝐈𝐍𝐆 𝐈𝐒 𝐃𝐎𝐍𝐄 ✅ 𝐀𝐁 𝐑𝐄𝐀𝐂𝐓𝐈𝐎𝐍 𝐊𝐈 𝐁𝐀𝐑𝐈**")
-
-
+except Exception as e:  
+    await m.reply_text(e)  
+await m.reply_text("𝐄𝐕𝐄𝐑𝐘𝐓𝐇𝐈𝐍𝐆 𝐈𝐒 𝐃𝐎𝐍𝐄 ✅ 𝐀𝐁 𝐑𝐄𝐀𝐂𝐓𝐈𝐎𝐍 𝐊𝐈 𝐁𝐀𝐑𝐈**")
 
 bot.run()
-if __name__ == "__main__":
-    asyncio.run(main())
+if name == "main":
+asyncio.run(main())
