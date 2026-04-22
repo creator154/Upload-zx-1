@@ -148,7 +148,7 @@ async def start(client: Client, msg: Message):
     await asyncio.sleep(1)
     await start_message.edit_text(
         Data.START.format(msg.from_user.mention) +
-        "Checking status Okay... Command janke kya karoge 💗.**Bot Made BY @SUMIT_ZX**🔍\n\n"
+        "Checking status Okay... Command janke kya karoge 💗.**Bot Made BY @Itz_Sumit**🔍\n\n"
         "Progress:[🟩🟩🟩🟩🟩🟩🟩🟩🟩] 100%\n\n"
     )
 
@@ -219,7 +219,7 @@ async def txt_handler(bot: Client, m: Message):
     except Exception:
             res = "UN"
     
-    await editable.edit("**Enter Your 𝙉𝙖𝙢𝙚 or send Z for use default🥂.**\n**For an Example**:\n @SUMIT_ZX")
+    await editable.edit("**Enter Your 𝙉𝙖𝙢𝙚 or send Z for use default🥂.**\n**For an Example**:\n @Itz_Sumit")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
@@ -456,7 +456,7 @@ async def txt_handler(bot: Client, m: Message):
     except Exception:
             res = "UN"
     
-    await editable.edit("**Enter Your 𝙉𝙖𝙢𝙚 or send Z for use default🥂.**\n**For an Example**:\n @SUMIT_ZX")
+    await editable.edit("**Enter Your 𝙉𝙖𝙢𝙚 or send Z for use default🥂.**\n**For an Example**:\n @Itz_Sumit")
     input3: Message = await bot.listen(editable.chat.id)
     raw_text3 = input3.text
     await input3.delete(True)
