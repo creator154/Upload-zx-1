@@ -323,10 +323,10 @@ async def txt_handler(bot: Client, m: Message):
              #url = f"https://player.muftukmall.site/?id={id}"
             #elif '/master.mpd' in url:
              #id =  url.split("/")[-2]
-             #url = f"https://anonymouspwplayerrrrr-e0949ecca662.herokuapp.com/pw?url={url}&token={raw_text4}"
+             #url = f"https://anonymouspwplayeerr-f2fc1874fd80.herokuapp.com/pw?url={url}&token={pw_token}"
             #url = f"https://madxapi-d0cbf6ac738c.herokuapp.com/{id}/master.m3u8?token={raw_text4}"
             if"d1d34p8vz63oiq" in url or "master.mpd?" in url:
-             url = f"https://ankitshakyaxapi.vercel.app/download?mpd_url={url}&quality={raw_text2}"
+             url = f"https://anonymouspwplayeerr-f2fc1874fd80.herokuapp.com/pw?url={url}&token={pw_token}"
                                                          
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
             name = f'{str(count).zfill(3)}) {name1[:60]} {my_name}'
