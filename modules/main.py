@@ -281,10 +281,10 @@ async def txt_handler(bot: Client, m: Message):
              #url = f"https://player.muftukmall.site/?id={id}"
             #elif '/master.mpd' in url:
              #id =  url.split("/")[-2]
-             #url = f"https://anonymouspwplayeer-2038df9c1dbd.herokuapp.com/pw?url={url}&token={raw_text4}"
+             #url = f"https://anonymouspwplayeerr-f2fc1874fd80.herokuapp.com/pw?url={url}&token={pw_token}"
             #url = f"https://stream.pimaxer.in/{vid_id}/master.m3u8?token=/{raw_text4}"
             elif"d1d34p8vz63oiq" in url or "sec1.pw.live" in url:
-             url = f"https://anonymouspwplayeer-2038df9c1dbd.herokuapp.com/pw?url={url}&token={raw_text4}"
+             url = f"https://anonymouspwplayeerr-f2fc1874fd80.herokuapp.com/pw?url={url}&token={pw_token}"
                      
                                                          
             name1 = links[i][0].replace("\t", "").replace(":", "").replace("/", "").replace("+", "").replace("#", "").replace("|", "").replace("@", "").replace("*", "").replace(".", "").replace("https", "").replace("http", "").strip()
